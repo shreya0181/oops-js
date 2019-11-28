@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //sync callback
+      function show(question, yes, no) {
+        if (confirm(question)) {
+          yes();
+        } else {
+          no();
+        }
+      }
+      function showoK() {
+        console.log("confirm");
+      }
+      function showCancel() {
+        console.log("cancel");
+      }
+      //
+      show(question, showoK, showCancel);
+
+      // greeting
+
+      function greeting(name) {
+        alert("hello" + " " + name);
+      }
+
+      function input(callback) {
+        var name = prompt("enter name");
+        callback(name);
+      }
+      input(greeting);
+
+      //setTimeOut
+      function sayHi() {
+        alert("hello its callback");
+      }
+      let mygreeting = setTimeout(sayHi, 2000);
+
+      // eg4
+      function displayTime() {
+        let date = new Date();
+        let time = date.toLocaleTimeString();
+        console.log(time);
+      }
+      const createClock = setInterval(displayTime, 2000);
+      var button = document.createElement("button");
+      button.addEventListener("click", function() {
+        clearInterval(displayTime);
+      });
+
+      //callback hell and  pyramid of doom
+    </script>
+  </body>
+</html>

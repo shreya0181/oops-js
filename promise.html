@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function logFetch(url) {
+        //returns promise
+        return fetch(url) //returns reponse
+          .then(response => response.text()) // .then used with fun that returns a promise
+          .then(text => {
+            console.log(text);
+          })
+          .catch(err => {
+            console.log("fetch failed " + err);
+          });
+      }
+
+      logFetch("");
+      var getPromise = new Promise((resolve, reject) => {
+        var check = false;
+        if (check) {
+          resolve("congrats"); //invokes .then
+        } else {
+          reject("something is fishy "); //invokes .catch
+        }
+      });
+
+      // .then==> promise chaining -->receives returns value of previous then
+      getPromise
+        .then(msg => {
+          console.log("success");
+          console.log(msg);
+        })
+        .catch(msg => {
+          console.log("error");
+          console.log(msg);
+        });
+    </script>
+  </body>
+</html>
